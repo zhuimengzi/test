@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="XUpload.js"></script>
+    <!--<script src="ajaxUpload.js"></script>-->
+</head>
+<body>
+    <div id="box">上传文件</div>
+    <!---->
+    <!--<form action="http://127.0.0.1/index.php" method="POST" enctype="multipart/form-data">-->
+        <!--　　<input type="file" name="fs" multiple>-->
+        <!--　　<input id="btn" type="button" value="上传">-->
+    <!--</form>-->
+    <script>
+        var a = new XUpload('#box', {
+            url: 'http://127.0.0.1:8081/upfile',
+            name: 'aaa',
+            autoSubmit: false,
+            data: {
+                a: 1,
+                b: 2
+            },
+            fileType: ['psd'],
+            maxSize: 36582311111,
+            maxFileNum: 2,
+            // 严格模式,当开启此模式时,必须所有文件都符合规格才算效验成功,否则效验失败
+            strict: true,
+            responseType: 'json',
+            // 文件效验失败
+            checkError: function (files) {
+                console.log(files);
+            },
+            // 文件效验成功
+            checkSuccess: function (files) {
+                console.log(files);
+            },
+            onChange: function (file) {
+                console.log('change', file);
+            },
+            onSubmit: function (file) {
+                console.log('submit', file);
+            },
+            onProgress: function (loaded, total) {
+                console.log(loaded, total);
+            },
+            onSuccess: function (result) {
+                console.log('success', result, this);
+            },
+            onError: function (result) {
+                console.log('error', result, this);
+            }
+        });
+    </script>
+    <!--<script>-->
+        <!--var a = new AjaxUpload('#box', {-->
+            <!--action: 'http://127.0.0.1:8081/upfile',-->
+            <!--autoSubmit: true,-->
+            <!--data: {-->
+                <!--a: 1,-->
+                <!--b: 2-->
+            <!--}-->
+        <!--});-->
+    <!--</script>-->
+</body>
+</html>

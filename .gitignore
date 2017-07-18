@@ -1,0 +1,11 @@
+birdfile.js
+package.json
+gulpfile.js
+local-config.js
+release
+node_modules
+local-config.js
+/*.iml
+.idea
+
+
