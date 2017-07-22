@@ -17,17 +17,17 @@
         <!--　　<input id="btn" type="button" value="上传">-->
     <!--</form>-->
     <script>
-        var a = new XUpload('#box', {
+        var a = XUpload({
+            el: '#box',
             url: 'http://127.0.0.1:8081/upfile',
             name: 'aaa',
-            autoSubmit: false,
+            autoSubmit: true,
             data: {
                 a: 1,
                 b: 2
             },
             fileType: ['psd'],
-            maxSize: 36582311111,
-            maxFileNum: 2,
+            eachQuantity: 1,
             // 严格模式,当开启此模式时,必须所有文件都符合规格才算效验成功,否则效验失败
             strict: true,
             responseType: 'json',
@@ -56,15 +56,94 @@
             }
         });
     </script>
-    <!--<script>-->
-        <!--var a = new AjaxUpload('#box', {-->
-            <!--action: 'http://127.0.0.1:8081/upfile',-->
-            <!--autoSubmit: true,-->
-            <!--data: {-->
-                <!--a: 1,-->
-                <!--b: 2-->
-            <!--}-->
-        <!--});-->
-    <!--</script>-->
+    <script>
+//        var upload = new AjaxUpload($upload, {
+//            action: uploadUrl,
+//            name: "uploadfile",
+//            responseType: 'json',
+//            data: {
+//                entity_id: 'entity_id',
+//                attachment_type: 'attachment_type',
+//                entity_name: 'entity_name'
+//            },
+//
+//            // 选中文件
+//            onChange: function() {
+//                var _url = window.location.href;
+//                if(_url.indexOf('company') !== -1)
+//                {
+//                    // 公司费用
+//                    if(_url.indexOf('_CO') !== -1)
+//                    {
+//                        if(typeof EA !== 'undefined') EA.cacheStartTime('companyAttachmentUpload');
+//                    }
+//
+//                }
+//                else
+//                {
+//                    // 个人费用
+//                    if(typeof EA !== 'undefined'){
+//                        EA.cacheStartTime('attachmentUpload');
+//                    }
+//                }
+//            },
+//
+//            // 点击-附件上传
+//            onSubmit: function(file, ext) {
+//                var _url = window.location.href;
+//                /* if(_url.indexOf('company') !== -1)
+//                 {
+//                 // 公司费用
+//                 if(_url.indexOf('_CO') !== -1)
+//                 {
+//                 if(typeof EA !== 'undefined') EA.clickStat('companyAttachmentUpload');
+//                 }
+//
+//                 }
+//                 else
+//                 {
+//                 // 个人费用
+//                 // if(typeof EA !== 'undefined') EA.clickStat('attachmentUpload');
+//                 }*/
+//
+//                $upload.addClass('uploading');
+//                setTimeout(function() {
+//                    if ($upload.hasClass('uploading')) {
+//                        tip.error({
+//                            msg: lang.zll_error_uploadFail
+//                        });
+//                        $upload.removeClass('uploading');
+//                        $upText.html(lang.zll_hint_reUpload);
+//                    }
+//                }, 10000);
+//            },
+//            onComplete: function(file, response) {
+//                if (!!response.flag) {
+//                    $upload.removeClass('uploading');
+//                    $upText.html(lang.zll_hint_upload);
+//                    var match = file.match(/\.([\w]+)$/);
+//                    var html = '<li><span class="icon-file ' + (match && match.length > 1 ? match[1] : '') + '"></span> <a class="text link" data-value="' + response.data.fileId + '">' + file + '</a> <span class="icon-delete">&times;</span> </li>';
+//                    // $instruc.css('display', 'none');
+//                    $downloadList.append(html);
+//                    baseVM.output.attachmentInfo.push({
+//                        attachmentId: response.data.fileId,
+//                        attachmentDesc: file
+//                    });
+//                    baseVM.$inData.attachmentInfo = baseVM.output.attachmentInfo;
+//                } else {
+//                    tip.error({
+//                        msg: lang.zll_error_uploadFail
+//                    });
+//                    $upload.removeClass('uploading');
+//                    $upText.html(lang.zll_hint_reUpload);
+//                }
+//
+//                if(typeof EA !== 'undefined') EA.trackResponseTimeUsingTags([
+//                    'attachmentUpload',
+//                    'companyAttachmentUpload'
+//                ]);
+//            }
+//        });
+    </script>
 </body>
 </html>
